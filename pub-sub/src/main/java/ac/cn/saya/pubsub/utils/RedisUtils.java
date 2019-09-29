@@ -463,7 +463,7 @@ public class RedisUtils {
     }
 
     /**
-     * 将list放入缓存
+     * 将list放入缓存(从右边尾部添加)
      *
      * @param key   键
      * @param value 值
@@ -480,7 +480,7 @@ public class RedisUtils {
     }
 
     /**
-     * 将list放入缓存
+     * 将list放入缓存(从右边尾部添加)
      *
      * @param key   键
      * @param value 值
@@ -501,7 +501,7 @@ public class RedisUtils {
     }
 
     /**
-     * 将list放入缓存
+     * 将list放入缓存(从右边尾部添加)
      *
      * @param key   键
      * @param value 值
@@ -571,6 +571,25 @@ public class RedisUtils {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    /**
+     * 弹出左边(开头)的元素
+     *
+     * @param key   键
+     * @return 弹出的元素
+     */
+    public Object lGet(String key){
+        try {
+            if (redisTemplate.opsForList().size(key) > 0){
+                return redisTemplate.opsForList().leftPop(key);
+            }else {
+                return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
