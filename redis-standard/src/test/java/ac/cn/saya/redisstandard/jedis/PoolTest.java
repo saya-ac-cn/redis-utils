@@ -26,7 +26,8 @@ public class PoolTest {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            JedisPoolUtil.releas(jedisPool,jedis);
+            jedis.close();
+            JedisPoolUtil.releas(jedisPool);
         }
     }
 
