@@ -36,9 +36,9 @@ public class JedisPoolUtil {
         return jedisPool;
     }
 
-    public static void releas(JedisPool jedisPool, Jedis jedis){
-        if (null != jedis){
-            jedisPool.returnResourceObject(jedis);
+    public static void releas(JedisPool jedisPool){
+        if (!jedisPool.isClosed()){
+            jedisPool.close();
         }
     }
 
